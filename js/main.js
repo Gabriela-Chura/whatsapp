@@ -1,4 +1,79 @@
+//Lógica 
 
+
+
+
+
+
+
+
+
+
+
+
+
+//Parte visual
+
+var liListItem = null; 
+
+function onMensajeKey(evt){
+	
+	if(evt.keyCode == 13){
+		
+var elMensajes=document.getElementById("mensajes");
+		crearChat(elMensajes.value);
+		crearMensaje(elMensajes.value); 
+	elMensajes.value=""; 
+	}
+}
+
+function crearMensaje(_mensaje){
+	
+	var htmlMensajeIn = '<div class="w-message w-message-in">'+
+		'<div class="w-message-text">' + '<h5 class="green-1">Maria Paula Rivarola</h5>' + '<p>Jajaja Sii finalmente se corto!!</p>' + '<div class="time">11:13</div>'+'</div>' + '</div>';
+	
+	var d = new Date();
+	var htmlMensajeOut = '<div class="w-message w-message-out">'+'<div class="w-message-text">'+'<p>'+_mensaje+'</p>'+'<div class="time">'+d.getHours()+':'+d.getMinutes()+'</div>'+'</div>'+'</div>';
+	
+	var mensaje = liListItem.getElementsByClassName("w-last-message")[0];
+	mensaje.innerHTML = _mensaje;
+	console.log();
+	//var mensaje = liListItem.getElementById("mensaje");
+	
+	var elConversacion = document.getElementById("chat");
+	elConversacion.innerHTML += htmlMensajeOut; 
+	elConversacion.scrollTop= elConversacion.scrollHeight;
+} 
+
+function crearListaChats(){
+	
+}
+
+function actualizarCabeceraChat(){
+	
+}
+
+
+function crearChat(_mensaje){
+	
+	var elListaChats = document.getElementById("lista-chats");
+	
+	if(liListItem == null){
+		liListItem = document.createElement('LI'); 
+	
+	
+	var htmlChatItem ='<div class="avatar">'+'<img src="image/logocodeacademy.png" alt="" class="wh-44">'+'<h4 class="w-contact-name">Laboratoria Perú</h4>'+'<p class="w-last-message" id="mensaje">'+_mensaje+'</p>'+'</div><div class="time" id="hora">14:27</div>';
+	
+	liListItem.innerHTML=htmlChatItem;
+elListaChats.insertBefore(liListItem,elListaChats.childNodes[0]);
+	
+		}
+}
+
+
+
+
+/*
 function Chat()
 {
 	this.nombre = '';
@@ -202,74 +277,8 @@ function chatTres(){
     document.getElementById("avatar").innerHTML = '<img src="https://upload.wikimedia.org/wikipedia/en/5/55/Xbox_NXE_avatar.png" alt="" class="wh-44"><h4 class="w-contact-name">Liset</h4><p>Ult. vez hoy</p>';
 }
 
-
-
-/*
-var texto=document.getElementById("mensajes");
-texto.addEventListener("keyup", enviarMensaje); 
-
-
-function enviarMensaje(evento){
-    if(event.keyCode==13 && texto.value.length!=0){
-        agregarMensaje();
-    }
-}
-
-
-function agregarMensaje(){
-   var mensaje=texto.value;
-   var div=document.createElement("div");
-   div.className="w-message w-message-out";
-   var divDos=document.createElement("div");
-   divDos.className="w-message-text";
-   var divTres=document.getElementById("chat");
-   var text=document.createElement("p");
-   var time=document.createElement("div");
-   time.className="time";
-   var fecha=new Date();
-   var hora=fecha.getHours();
-   var minuto=fecha.getMinutes();
-    if(minuto<10){
-        minuto='0'+minuto;
-    }
-    divTres.scrollTop=divTres.scrollHeight; 
-   time.innerHTML=hora+":"+minuto;
-   text.innerHTML=mensaje;
-   div.appendChild(divDos);
-   divDos.appendChild(text);
-   divDos.appendChild(time);
-   divTres.appendChild(div);
-   
-   texto.value="";
-   texto.focus();
-}
-
-var search = document.getElementById("search"),
-   contacto = document.getElementsByTagName("h4"),
-   forEach = Array.prototype.forEach;
-
-
-
-search.addEventListener("keyup", function(e){
-   var choice = this.value;
- 
-   forEach.call(contacto, function(f){
-       if (f.innerHTML.toLowerCase().search(choice.toLowerCase()) == -1)
-           f.parentNode.parentNode.style.display = "none";
-           
-           
-       else
-          f.parentNode.parentNode.style.display = "block";        
-   });
-}, 
-                       false);
-
-
-
-
-
-
 */
+
 
 
 
