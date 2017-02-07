@@ -13,7 +13,7 @@
 	  	<link href="css/main.css" rel="stylesheet">
 	  	<link href="css/queries.css" rel="stylesheet">
 	</head>
-	<body>
+	<body onload="init()">
 	  	<div class="w-app">
 	  		<div class="container">
 	  			<aside class="col-md-4 w-contacts">
@@ -31,7 +31,7 @@
 	  					<input type="text" placeholder="Buscar o empezar un chat nuevo" class="w-search-contacts">
 	  				</div>
 	  				<ul class="w-recent-chats" id="lista-chats">
-	  					<li>
+	  					<!-- <li>
 		  					<div class="avatar">
 		  						<img src="image/logocodeacademy.png" alt="" class="wh-44">
 		  						<h4 class="w-contact-name">Laboratoria Perú</h4>
@@ -118,11 +118,11 @@
 	  							<p class="w-last-message">Estoy bajando con Aldo, vao a comer?</p>
 	  						</div>
 	  						<div class="time">03/01/2016</div>
-	  					</li>	 					
+	  					</li>--> 					
 	  				</ul>
 	  			</aside>
 	  			<section class="col-md-8 w-contacts w-messages">
-	  				<header class="w-chat-messages clearfix">
+	  				<header id="chat-header" class="w-chat-messages clearfix">
 	  					<div class="avatar col-xs-9 w-chat-profile">
 	  						<img src="image/logocodeacademy.png" alt="">
 	  						<h4 class="w-contact-name">Laboratoria Perú</h4>

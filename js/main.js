@@ -1,20 +1,75 @@
 //Lógica 
 
+function Chat(_nombre, _imagen)
+{
+	this.nombre =  _nombre;
+	this.imagenURL = _imagen;
+	this.ultimoMensaje = "";
+	this.horaUltimoMensaje = '';
+	//this.mensaje = [];
+	/*this.borrarMensajes = function()
+	{
+		alert("borrado");
+	};*/
+}
 
 
-
-
-
-
-
-
-
-
-
+var dataListaChats = [
+	new Chat("chat 1", 'image/logocodeacademy.png'),
+	new Chat("chat 2", 'image/logocodeacademy.png'),
+	new Chat("chat 3", 'image/logocodeacademy.png'),
+	new Chat("chat 4", 'image/logocodeacademy.png')
+];
 
 //Parte visual
 
 var liListItem = null; 
+
+function init(){
+	
+	initChatList()
+}
+
+function initChatList(){
+	var elListaChats = document.getElementById("lista-chats");
+	
+	for (var i in dataListaChats){
+		
+		var htmlChatItem = '<li><div class="avatar">' +
+			'<img src="' + dataListaChats[i].imagenURL +  '" alt="" class="wh-44">' +
+			'<h4 class="w-contact-name">' + dataListaChats[i].nombre + '</h4>' +
+			'<p class="w-last-message" id="mensaje">' + dataListaChats[i].ultimoMensaje + '</p>' +
+			'</div>' +
+			'<div class="time" id="hora">' + dataListaChats[i].horaUltimoMensaje + '</div></li>';
+		
+		//dataListaChats[i].borrarMensajes();
+		elListaChats.innerHTML += htmlChatItem;
+	}
+	
+	
+	setEventsChatList();
+	
+}
+
+function setEventsChatList(){
+	var listaChats = document.getElementById('lista-chats');
+	var arrListItems = listaChats.getElementsByTagName('li');
+	
+	for (var i=0; i<arrListItems.length; i++){
+		
+		arrListItems[i].addEventListener('click', onChatItemClick);
+	}
+}
+
+function onChatItemClick(evt){
+	
+	var contactName= evt.currentTarget.getElementsByClassName('w-contact-name')[0].textContent;
+	var imgURL = evt.currentTarget.getElementsByClassName("wh-44")[0].src;
+	
+	actualizarCabeceraChat(contactName, imgURL, "contectado");
+
+}
+
 
 function onMensajeKey(evt){
 	
@@ -37,7 +92,7 @@ function crearMensaje(_mensaje){
 	
 	var mensaje = liListItem.getElementsByClassName("w-last-message")[0];
 	mensaje.innerHTML = _mensaje;
-	console.log();
+	
 	//var mensaje = liListItem.getElementById("mensaje");
 	
 	var elConversacion = document.getElementById("chat");
@@ -45,12 +100,28 @@ function crearMensaje(_mensaje){
 	elConversacion.scrollTop= elConversacion.scrollHeight;
 } 
 
-function crearListaChats(){
+/*function crearListaChats(){
 	
 }
 
-function actualizarCabeceraChat(){
+function borrarPanel(){
 	
+
+		if()
+		{
+			
+		}else{
+			
+		}
+
+}*/
+
+function actualizarCabeceraChat(_contactName, _imageURL, _estado){
+	
+	var chatHeader = document.getElementById("chat-header");
+	chatHeader.getElementsByClassName('w-contact-name')[0].innerHTML=_contactName;
+	chatHeader.getElementsByClassName('w-users-messages')[0].innerHTML=_estado;
+	chatHeader.getElementsByTagName('img')[0].src=_imageURL;
 }
 
 
@@ -68,6 +139,8 @@ function crearChat(_mensaje){
 elListaChats.insertBefore(liListItem,elListaChats.childNodes[0]);
 	
 		}
+	
+	setEventsChatList();
 }
 
 
