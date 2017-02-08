@@ -67,6 +67,7 @@ function onChatItemClick(evt){
 	var imgURL = evt.currentTarget.getElementsByClassName("wh-44")[0].src;
 	
 	actualizarCabeceraChat(contactName, imgURL, "contectado");
+	erased();
 
 }
 
@@ -163,6 +164,13 @@ search.addEventListener("keyup", function(e){
 },
 false);
 
+function erased() {
+    var historyChat = document.getElementById("chat");
+   
+    while (historyChat.firstChild) {
+        historyChat.removeChild(historyChat.firstChild);
+    }
+}
 
 
 /*
