@@ -15,10 +15,10 @@ function Chat(_nombre, _imagen)
 
 
 var dataListaChats = [
-	new Chat("chat 1", 'image/logocodeacademy.png'),
-	new Chat("chat 2", 'image/logocodeacademy.png'),
-	new Chat("chat 3", 'image/logocodeacademy.png'),
-	new Chat("chat 4", 'image/logocodeacademy.png')
+	new Chat("Raymi Saldomando", 'image/raymi.jpg'),
+	new Chat("Mariana Costa", 'image/mariana.jpg'),
+	new Chat("Ana María Martinez Franklin", 'image/anamaria.jpg'),
+	new Chat("Rodulfo Prieto", 'image/rodulfo.jpg')
 ];
 
 //Parte visual
@@ -143,6 +143,25 @@ elListaChats.insertBefore(liListItem,elListaChats.childNodes[0]);
 	setEventsChatList();
 }
 
+
+var search = document.getElementById("search"),
+	listaContacto= document.getElementById("lista-chats"),
+  contacto =listaContacto.getElementsByClassName("w-contact-name"),
+   forEach = Array.prototype.forEach;
+
+search.addEventListener("keyup", function(e){
+   var choice = this.value;
+ 
+   forEach.call(contacto, function(f){
+       if (f.innerHTML.toLowerCase().search(choice.toLowerCase()) == -1)
+           f.parentNode.parentNode.style.display = "none";
+           
+           
+       else
+          f.parentNode.parentNode.style.display = "block";      
+   });
+},
+false);
 
 
 
